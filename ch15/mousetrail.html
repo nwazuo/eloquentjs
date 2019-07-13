@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mousetrail Excercise</title>
+</head>
+
+<body>
+  <div class="trail"></div>
+  <div class="trail" style="background: red"></div>
+  <div class="trail" style="background: green"></div>
+</body>
+<style>
+  body {
+    height: 200px;
+    background: beige;
+  }
+
+  .trail {
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
+    background: blue;
+    position: absolute;
+  }
+</style>
+<script>
+  let trails = document.querySelectorAll('.trail');
+
+  function trail(event, trails, counter = 0) {
+    trails[counter].style.left = event.pageX + 'px';
+    trails[counter].style.top = event.pageY + 'px';
+    counter++;
+    if (counter < trails.length) {
+      setTimeout(next => {
+        trail(event, trails, counter);
+      }, 100)
+    }
+  }
+  window.addEventListener('mousemove', e => {
+    trail(e, trails);
+
+    // trails.forEach(trail => {
+    //   trail.style.left = e.pageX + 'px';
+    //   trail.style.top = e.pageY + 'px';
+    // })
+  })
+</script>
+
+</html>

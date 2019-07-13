@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>A Platform Game</title>
+  <link href="platform-game.css" rel="stylesheet" type="text/css" />
+  <script src="platform-game.js"></script>
+</head>
+
+<body>
+  <script src="levels.js"></script>
+  <script>
+    //     let simpleLevelPlan = `
+    // ......................
+    // ..#................#..
+    // ..#..............=.#..
+    // ..#.........o.o....#..
+    // ..#.@......#####...#..
+    // ..#####............#..
+    // ......#++++++++++++#..
+    // ......##############..
+    // ......................`;
+
+    //     let simpleLevel = new Level(simpleLevelPlan);
+    //     let display = new DOMDisplay(document.body, simpleLevel);
+    //     // display.syncState(State.start(simpleLevel));
+    runGame(GAME_LEVELS, DOMDisplay);
+  </script>
+</body>
+
+</html>

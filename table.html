@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Test Page for Eloquent js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="egg.js"></script>
+</head>
+
+<body>
+  <h1>Mountains</h1>
+
+  <div id="mountains"></div>
+
+  <script>
+    const MOUNTAINS = [
+      { name: "Kilimanjaro", height: 5895, place: "Tanzania" },
+      { name: "Everest", height: 8848, place: "Nepal" },
+      { name: "Mount Fuji", height: 3776, place: "Japan" },
+      { name: "Vaalserberg", height: 323, place: "Netherlands" },
+      { name: "Denali", height: 6168, place: "United States" },
+      { name: "Popocatepetl", height: 5465, place: "Mexico" },
+      { name: "Mont Blanc", height: 4808, place: "Italy/France" }
+    ];
+
+    // Your code here - Chizo Pon this one
+
+    //gotta borrrow this one 
+    function elt(type, ...children) {
+      let node = document.createElement(type);
+      for (let child of children) {
+        if (typeof child != "string" && typeof child != "number") {
+          node.appendChild(child);
+        }
+        else node.appendChild(document.createTextNode(child));
+      }
+      return node;
+    }
+
+    //takes an array of objects and returns an array of an occurence of all the keys of the objects
+    function enumerateProps(arrayOfObjs) {
+      let keys = [];
+      for (let obj of arrayOfObjs) {
+        let objKeys = Object.keys(obj);
+        for (let key of objKeys) {
+          if (!keys.includes(key)) {
+            keys.push(key);
+          }
+        }
+      }
+      return keys;
+    }
+
+    //make the table
+    function buildTable(container, data) {
+      let table = document.createElement('table');
+      table.border = 1;
+      let keys = enumerateProps(data);
+      let heading = document.createElement('tr');
+      for (let key of keys) {
+        let cell = elt('th', key);
+        heading.appendChild(cell);
+      }
+      table.appendChild(heading);
+
+      for (obj of data) {
+        let tableRow = document.createElement('tr');
+        console.log(tableRow);
+        let tableData = Object.values(obj);
+        for (datum of tableData) {
+          let tableData = elt('td', datum);
+          if (typeof datum == "number") tableData.style.textAlign = 'right';
+          tableRow.appendChild(tableData);
+        }
+        table.appendChild(tableRow)
+      }
+      container.appendChild(table);
+    }
+  </script>
+</body>
+
+</html>
