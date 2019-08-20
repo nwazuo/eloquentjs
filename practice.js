@@ -119,3 +119,13 @@ function minusOne(match, amount, unit) {
 }
 
 console.log(stock.replace(/(\d+) (\w+)/g, minusOne));
+
+class Play {
+  constructor(name, type) {
+    this.name = name;
+    this.type = type;
+  }
+  shout() {
+    console.log(`I am playing the game of ${name}`);
+  }
+}
